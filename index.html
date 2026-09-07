@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Roblox Game Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 20px;
+        }
+        input {
+            width: 300px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        #gameFrame {
+            margin-top: 30px;
+            width: 100%;
+            height: 600px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Embed Roblox Game</h1>
+    <p>Enter Roblox Game ID to view:</p>
+    <input type="text" id="gameIdInput" placeholder="Roblox Game ID" />
+    <button onclick="loadGame()">Load Game</button>
+
+    <div id="embedContainer"></div>
+
+    <script>
+        function loadGame() {
+            const gameId = document.getElementById('gameIdInput').value.trim();
+            if (!gameId) {
+                alert('Please enter a valid Roblox game ID.');
+                return;
+            }
+            const embedUrl = `https://www.roblox.com/games/embed?placeId=${gameId}`;
+            const iframeHtml = `<iframe id="gameFrame" src="${embedUrl}" allowfullscreen></iframe>`;
+            document.getElementById('embedContainer').innerHTML = iframeHtml;
+        }
+    </script>
+</body>
+</html>
